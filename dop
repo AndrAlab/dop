@@ -1,0 +1,44 @@
+def find_min(arr):
+    return min(arr)
+
+
+def sum_between_positive(arr):
+    first = -1
+    last = -1
+
+    for i in range(len(arr)):
+        if arr[i] > 0:
+            if first == -1:
+                first = i
+            last = i
+
+    if first == -1 or first == last:
+        return 0
+
+    return sum(arr[first+1:last])
+
+
+def zeros_first(arr):
+    zeros = []
+    others = []
+
+    for x in arr:
+        if x == 0:
+            zeros.append(x)
+        else:
+            others.append(x)
+
+    return zeros + others
+
+
+      arr = list(map(float, input("Введіть числа через пробіл: ").split()))
+
+print("Масив:", arr)
+
+print("Мінімальний елемент:", find_min(arr))
+
+print("Сума між першим і останнім додатними:",
+      sum_between_positive(arr))
+
+print("Перетворений масив:",
+      zeros_first(arr))
